@@ -1,0 +1,204 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+form {
+    width: 100%;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+}
+
+
+.margin-top {
+    margin-top: 5%;
+}
+
+.center-div-choix,
+.center-div-inscription,
+.center-div-connexion {
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    margin: auto;
+    margin-top: 5%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: max-content;
+    width: 50%;
+    border: solid silver 1px;
+    padding: 25px;
+}
+
+.btn-size {
+    font-size: 20px;
+    transform: scale(1);
+    width: 100%;
+    height: 50px;
+}
+
+
+.titre-color {
+    background-color: #130f40;
+    color: white;
+    padding: 20px;
+}
+
+.center-div-inscription input,
+.center-div-connexion input {
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 2.5%;
+}
+
+.center-div-inscription table td {
+    width: 50%;
+}
+
+.center-div-inscription label,
+.center-div-connexion label {
+    display: table;
+}
+
+.div-erreur {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    color: red;
+
+}
+
+.center-div-edition {
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    margin: auto;
+    margin-top: 2%;
+    height: max-content;
+    width: 66.66%;
+    border: solid silver 1px;
+    padding: 25px;
+}
+
+.edition-profil table {
+    border-collapse: separate;
+    border-spacing: 20px;
+}
+
+.edition-profil input {
+    width: 100%;
+    padding: 10px;
+}
+
+.edition-profil h2 {
+    margin-bottom: 2.5%;
+    text-align: center;
+}
+
+.navbar-profil {
+    width: 100%;
+}
+
+.navbar li {
+    margin-right: 5%;
+    font-size: 20px;
+}
+
+
+#chartContainerCardiaque {
+    margin: 0 auto;
+    margin-top: 2.5%;
+    width: 95%;
+    height: 62%;
+}
+
+#chartContainerCalorie {
+    margin: 0 auto;
+    margin-top: 5%;
+    width: 95%;
+    height: 62%;
+}
+.separation{
+    width: 100%;
+    height: 10%;
+}
+.graph{
+width: 100%;
+margin-bottom: 5%;
+}
+.rejouer{
+    float: right;
+    border-collapse: separate;
+    border-spacing: 10px;
+    margin-top: 2.5%;
+    margin-right: 2.5%;
+    width: 33.33%;
+}
+.rejouer td{
+    width: 50%;
+}
+
+.rejouer input{
+    font-size: 15px;
+}
+
+
+@media screen and (max-width: 850px) {
+    p{
+        font-size: 15px;
+    }
+    h1{
+        font-size: 30px;
+    }
+
+    .center-div-choix,
+    .center-div-inscription,
+    .center-div-connexion {
+        box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+        margin: auto;
+        margin-top: 5%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: max-content;
+        width: 90%;
+        border: solid silver 1px;
+        padding: 25px;
+    }
+
+    .center-div-edition {
+        box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+        margin: auto;
+        margin-top: 2%;
+        height: max-content;
+        width: 90%;
+        border: solid silver 1px;
+        padding: 25px;
+    }
+
+    #chartContainerCardiaque {
+        margin: 0 auto;
+        margin-top: 2.5%;
+        width: 95%;
+        height: 62%;
+    }
+    
+    #chartContainerCalorie {
+        margin: 0 auto;
+        margin-top: 10%;
+        width: 95%;
+        height: 62%;
+    }
+
+    .rejouer{
+        margin: 0 auto;
+        margin-top: 2.5%;
+        border-collapse: separate;
+        border-spacing: 10px;
+        width: 100%;
+    }
+
+}

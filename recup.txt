@@ -1,0 +1,284 @@
+<script type="text/javascript">
+var cardiaque = document.getElementById('rythmecardiaque');
+var calorie = document.getElementById('calorie');
+
+var cardiaqueGraph = document.getElementById('chartContainerCardiaque');
+var calorieGraph = document.getElementById('chartContainerCalorie');
+
+cardiaqueGraph.style.display = "block";
+calorieGraph.style.display = "none";
+
+
+cardiaqueGraph.style.margin = "0 auto";
+cardiaqueGraph.style.marginTop = "2.5%";
+var donnee = <?php echo json_encode($_SESSION['donnee']); ?>;
+var donnee_sport;
+Sport(donnee);
+
+var y = 0;
+var data = [];
+var dataSeries_cardiaque = {
+    type: "line",
+    markerSize: 15,
+    lineThickness: 4,
+    legendText: "Rythme cardiaque moyen",
+    showInLegend: true
+};
+var dataSeries_cardiaquemax = {
+    type: "line",
+    markerSize: 15,
+    lineThickness: 4,
+    legendText: "Rythme cardiaque max",
+    showInLegend: true
+};
+
+var dataPoints_cardiaque = [];
+var dataPoints_cardiaquemax = [];
+
+donnee.forEach(function(element) {
+    dataPoints_cardiaque.push({
+        label: element.jour,
+        y: parseInt(element.rythmecardiaque)
+    });
+    dataPoints_cardiaquemax.push({
+        label: element.jour,
+        y: parseInt(element.rythmecardiaquemax)
+    })
+});
+
+dataSeries_cardiaque.dataPoints = dataPoints_cardiaque;
+dataSeries_cardiaquemax.dataPoints = dataPoints_cardiaquemax;
+data.push(dataSeries_cardiaque);
+data.push(dataSeries_cardiaquemax);
+
+//Better to construct options first and then pass it as a parameter
+var options = {
+    zoomEnabled: true,
+    animationEnabled: true,
+    animationDuration: 2000,
+
+    legend: {
+        fontFamily: "tahoma",
+        fontSize: 15,
+        markerMargin: 10
+    },
+    title: {
+        text: "Rythme cardiaque en fonction des jours de la semaine",
+        fontSize: 30
+
+    },
+    axisX: {
+
+
+    },
+    axisY: {
+        includeZero: true,
+        maximum: 250,
+        title: "Battements par minute",
+        titleFontSize: 15
+    },
+    data: data // random data
+};
+
+var chartCardiaque = new CanvasJS.Chart("chartContainerCardiaque", options);
+
+chartCardiaque.render();
+
+
+function Sport(donnee) {
+    donnee_sport = {
+        jour: donnee.jour,
+        calorie: donnee.calorie,
+        rythmecardiaque: donnee.rythmecardiaque,
+        rythmecardiaque_max: donnee.rythmecardiaquemax,
+        temps: donnee.temps
+    }
+};
+</script>
+<script type="text/javascript">
+var cardiaque = document.getElementById('rythmecardiaque');
+var calorie = document.getElementById('calorie');
+
+var cardiaqueGraph = document.getElementById('chartContainerCardiaque');
+var calorieGraph = document.getElementById('chartContainerCalorie');
+
+var chartCalorie;
+var chartCardiaque;
+
+/* cardiaqueGraph.style.display = "block";
+calorieGraph.style.display = "none";
+
+
+cardiaqueGraph.style.margin = "0 auto";
+cardiaqueGraph.style.marginTop = "2.5%";
+*/
+
+cardiaque.onclick = () => {
+    chartCalorie.destroy();
+   /* cardiaqueGraph.style.display = "block";
+    calorieGraph.style.display = "none";
+
+    cardiaqueGraph.style.margin = "0 auto";
+    cardiaqueGraph.style.marginTop = "2.5%";*/
+
+    var donnee = <?php echo json_encode($_SESSION['donnee']); ?>;
+    var donnee_sport;
+    Sport(donnee);
+
+    var y = 0;
+    var data = [];
+    var dataSeries_cardiaque = {
+        type: "line",
+        markerSize: 15,
+        lineThickness: 4,
+        legendText: "Rythme cardiaque moyen",
+        showInLegend: true
+    };
+    var dataSeries_cardiaquemax = {
+        type: "line",
+        markerSize: 15,
+        lineThickness: 4,
+        legendText: "Rythme cardiaque max",
+        showInLegend: true
+    };
+
+    var dataPoints_cardiaque = [];
+    var dataPoints_cardiaquemax = [];
+
+    donnee.forEach(function(element) {
+        dataPoints_cardiaque.push({
+            label: element.jour,
+            y: parseInt(element.rythmecardiaque)
+        });
+        dataPoints_cardiaquemax.push({
+            label: element.jour,
+            y: parseInt(element.rythmecardiaquemax)
+        })
+    });
+
+    dataSeries_cardiaque.dataPoints = dataPoints_cardiaque;
+    dataSeries_cardiaquemax.dataPoints = dataPoints_cardiaquemax;
+    data.push(dataSeries_cardiaque);
+    data.push(dataSeries_cardiaquemax);
+
+    //Better to construct options first and then pass it as a parameter
+    var options = {
+        zoomEnabled: true,
+        animationEnabled: true,
+        animationDuration: 2000,
+
+        legend: {
+            fontFamily: "tahoma",
+            fontSize: 15,
+            markerMargin: 10
+        },
+        title: {
+            text: "Rythme cardiaque en fonction des jours de la semaine",
+            fontSize: 30
+
+        },
+        axisX: {
+
+
+        },
+        axisY: {
+            includeZero: true,
+            maximum: 250,
+            title: "Battements par minute",
+            titleFontSize: 15
+        },
+        data: data // random data
+    };
+
+     chartCardiaque = new CanvasJS.Chart("chartContainerCardiaque", options);
+
+    chartCardiaque.render();
+
+
+    function Sport(donnee) {
+        donnee_sport = {
+            jour: donnee.jour,
+            calorie: donnee.calorie,
+            rythmecardiaque: donnee.rythmecardiaque,
+            rythmecardiaque_max: donnee.rythmecardiaquemax,
+            temps: donnee.temps
+        }
+    };
+};
+
+
+calorie.onclick = () => {
+   /* cardiaqueGraph.style.display = "none";
+    calorieGraph.style.display = "block";
+
+    calorieGraph.style.margin = "0 auto";
+    calorieGraph.style.marginTop = "2.5%";*/
+    chartCardiaque.destroy();
+    var donnee = <?php echo json_encode($_SESSION['donnee']); ?>;
+    var donnee_sport;
+    Sport(donnee);
+
+    var y = 0;
+    var data = [];
+    var dataSeries = {
+
+        type: "line",
+        markerSize: 15,
+        lineThickness: 4,
+        legendText: "Calories",
+        showInLegend: true
+    };
+    var dataPoints = [];
+
+    donnee.forEach(function(element) {
+        dataPoints.push({
+            label: element.jour,
+            y: parseInt(element.calorie)
+        })
+    })
+    dataSeries.dataPoints = dataPoints;
+    data.push(dataSeries);
+
+    //Better to construct options first and then pass it as a parameter
+    var options = {
+        zoomEnabled: true,
+        animationEnabled: true,
+        animationDuration: 2000,
+
+        legend: {
+            fontFamily: "tahoma",
+            fontSize: 15,
+            markerMargin: 10
+        },
+        title: {
+            text: "Calories dépensées en fonction des jours de la semaine",
+            fontSize: 30
+        },
+        axisX: {
+
+
+        },
+        axisY: {
+            includeZero: true,
+            maximum: 700,
+            title: "Calories",
+            titleFontSize: 15
+        },
+        data: data // random data
+    };
+
+     chartCalorie = new CanvasJS.Chart("chartContainerCalorie", options);
+
+    chartCalorie.render();
+
+    function Sport(donnee) {
+        donnee_sport = {
+            jour: donnee.jour,
+            calorie: donnee.calorie,
+            rythmecardiaque: donnee.rythmecardiaque,
+            rythmecardiaque_max: donnee.rythmecardiaquemax,
+            temps: donnee.temps
+        }
+    };
+};
+</script>
